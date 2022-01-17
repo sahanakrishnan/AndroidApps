@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 /**
@@ -20,7 +21,7 @@ public class HomePage extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private View rootViewPublic;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -30,11 +31,12 @@ public class HomePage extends Fragment {
     }
 
         public void sendMessage(View view) {
-//        Intent intent = new Intent(MainActivity.this, DisplayMessageActivity.class);
-//        EditText editText = (EditText) findViewById(R.id.editTextTextPersonName);
-//        String message = editText.getText().toString();
-//        intent.putExtra(EXTRA_MESSAGE, message);
-//        startActivity(intent);
+        Intent intent = new Intent(getActivity(), DisplayMessageActivity.class);
+        EditText editText = (EditText) rootViewPublic.findViewById(R.id.editTextTextPersonName);
+        String message = editText.getText().toString();
+//            String message = "Heloo";
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
         }
     
     /**
@@ -64,12 +66,27 @@ public class HomePage extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_page, container, false);
+
+        // Links used
+        View rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
+        Button loginButton = (Button) rootView.findViewById(R.id.button);
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendMessage(view);
+            }
+        });
+        rootViewPublic = rootView;
+
+        return rootView;
     }
 }
