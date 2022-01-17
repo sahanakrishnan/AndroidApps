@@ -1,10 +1,12 @@
 package com.example.sahanaandroidapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class HomePage extends Fragment {
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +29,14 @@ public class HomePage extends Fragment {
         // Required empty public constructor
     }
 
+        public void sendMessage(View view) {
+//        Intent intent = new Intent(MainActivity.this, DisplayMessageActivity.class);
+//        EditText editText = (EditText) findViewById(R.id.editTextTextPersonName);
+//        String message = editText.getText().toString();
+//        intent.putExtra(EXTRA_MESSAGE, message);
+//        startActivity(intent);
+        }
+    
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
